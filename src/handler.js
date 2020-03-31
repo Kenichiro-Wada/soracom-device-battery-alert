@@ -62,7 +62,7 @@ async function getLteMButtonByAwsInfo() {
  * @param {*} str 
  */
 async function switchParamToArray(str) {
-  return Array.from(str)
+  return Array.from(str);
 }
 
 /**
@@ -88,8 +88,8 @@ async function getSimData(obj) {
 
     } else {
       // IoT Button 
-      battery = JSON.parse(dataObjContent).batteryLevel
-      isIotButton = true
+      battery = JSON.parse(dataObjContent).batteryLevel;
+      isIotButton = true;
     }
     imisSimDataArray.push(
       {
@@ -100,7 +100,7 @@ async function getSimData(obj) {
       }
     )
   }
-  return imisSimDataArray
+  return imisSimDataArray;
 }
 
 /**
@@ -118,7 +118,7 @@ async function getGadgetData(obj) {
       }
     )
   }
-  return gadgetDataArray
+  return gadgetDataArray;
 }
 
 /**
@@ -127,7 +127,7 @@ async function getGadgetData(obj) {
  */
 async function createMessage(data) {
   let messageArray = [];
-  console.log(`送信対象デバイス ${JSON.stringify(data, null, 2)}`)
+  console.log(`送信対象デバイス ${JSON.stringify(data, null, 2)}`);
   messageArray.push(`デバイス名: ${data.name}`);
   messageArray.push(`バッテリーレベル: ${data.batteryLevel}`);
   messageArray.push(`のため、そろそろ電池交換が必要です。`);
@@ -234,14 +234,14 @@ exports.handler = async (event) => {
       // Buttonシリーズの場合
       if (simData.batteryLevel <= iotButtonBatteryTheeshold) {
         postGadgetsArray.push(simData);
-        const message = await createMessage(simData)
+        const message = await createMessage(simData);
         await postSlackMessage(message)
       }
     } else {
       if (simData.batteryLevel <= gpsMultUnitBatteryTheeshold
          && simData.batteryLevel === -1) {
         postGadgetsArray.push(simData);
-        const message = await createMessage(simData)
+        const message = await createMessage(simData);
         await postSlackMessage(message)
       }
     }
@@ -251,8 +251,8 @@ exports.handler = async (event) => {
     const gadgetsData = gadgetsDataArray[i];
     if (gadgetsData.batteryLevel <= iotButtonBatteryTheeshold) {
       postGadgetsArray.push(gadgetsData);
-      const message = await createMessage(gadgetsData)
-      await postSlackMessage(message)
+      const message = await createMessage(gadgetsData);
+      await postSlackMessage(message);
     }
   }
   const responseBody = {
@@ -262,7 +262,6 @@ exports.handler = async (event) => {
       statusCode: 200,
       body: JSON.stringify(responseBody),
   };
-  console.log("response: " + JSON.stringify(response))
+  console.log("response: " + JSON.stringify(response));
   return response;
 };
-
