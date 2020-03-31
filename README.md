@@ -7,7 +7,7 @@
 - LTE-M Button Plus
 - LTE-M Button powered by AWS
 
-SORACOMから情報を取得部分は、
+SORACOMから情報を取得する部分は、
 [SORACOM の利用料金を定期的に Slack に通知する](https://blog.soracom.jp/blog/2020/01/20/notify-slack-of-soracom-usage/)
 で案内のあったSORACOM　CLI Layerを使っています。
 
@@ -25,9 +25,8 @@ SORACOMから情報を取得部分は、
 
 ### Lambda環境設定例
 #### デバイスのチェックモード
-
-Key : SW001
-Value : 以下参照(対応デバイスが増えたら、桁数が増える想定)
+- Key : SW001
+- Value : 以下参照(対応デバイスが増えたら、桁数が増える想定)
 
 | 桁目 | Description | 0/none | 1 |
 | :--- | :--- | :--- | :--- |
@@ -42,45 +41,45 @@ Value : 以下参照(対応デバイスが増えたら、桁数が増える想�
 - 1 -> LTE-M Button powered by AWSのみチェック
 
 #### LTE-M Button for Enterprise/LTE-M Button Plus の検索モード
-Key : SW002
-Value : 0(SIM Group名で検索)/1(SIMのTagで検査)
+- Key : SW002
+- Value : 0(SIM Group名で検索)/1(SIMのTagで検査)
 
 #### 環境変数の暗号化モード (Revision 1.0 未実装)
-Key : SW003
-Value : 0(暗号化なし)/1(Amazon KMSで暗号化)
+- Key : SW003
+- Value : 0(暗号化なし)/1(Amazon KMSで暗号化)
 
 #### 通知モード (Revision 1.0 未実装)
-Key : SW004
-Value : 0(毎回)/1(1日ごと)
+- Key : SW004
+- Value : 0(毎回)/1(1日ごと)
 
 #### GPSマルチユニットのバッテリーアラートの閾値
-Key : GPS_MULTIUNIT_BATTERY_THRESHOLD
-Value : 数値(ex.1)
+- Key : GPS_MULTIUNIT_BATTERY_THRESHOLD
+- Value : 数値(ex.1)
 
 #### LTE-M Button powered by AWS /LTE-M Button for Enterprise /LTE-M Button Plusのバッテリーアラートの閾値
-Key : IOT_BUTTON_BATTERY_THRESHOLD
-Value : 数値(ex.0.25) 
+- Key : IOT_BUTTON_BATTERY_THRESHOLD
+- Value : 数値(ex.0.25)
 
 #### LTE-M Button for Enterprise/LTE-M Button Plus の検索用TagName
 SW002で1(SIMのTagで検査)の時のみ利用
-Key : BUTTON_SEARCH_TAG_NAME
-Value : 検索したいタグ名
+- Key : BUTTON_SEARCH_TAG_NAME
+- Value : 検索したいタグ名
 
 #### LTE-M Button for Enterprise/LTE-M Button Plus の検索用TagValue
-Key : BUTTON_SEARCH_TAG_VALUE
-Value : 検索したいタグのValue
+- Key : BUTTON_SEARCH_TAG_VALUE
+- Value : 検索したいタグのValue
 
 #### SORACOMのAUTH KEY ID
-Key : AUTH_KEY_ID
-Value : SORACOMマネージメントコンソールで発行されるAUTH KEY ID
+- Key : AUTH_KEY_ID
+- Value : SORACOMマネージメントコンソールで発行されるAUTH KEY ID
 
 #### SORACOMのSECRET KEY ID
-Key : AUTH_KEY
-Value : SORACOMマネージメントコンソールで発行されるSECRET KEY ID
+- Key : AUTH_KEY
+- Value : SORACOMマネージメントコンソールで発行されるSECRET KEY ID
 
 #### Slackの通知先Webhook URL
-Key : SLACK_WEBHOOK_URL
-Value : SORACOMマネージメントコンソールで発行されるSECRET KEY ID
+- Key : SLACK_WEBHOOK_URL
+- Value : SORACOMマネージメントコンソールで発行されるSECRET KEY ID
 
 ## 今後の予定
 - 未実装部分の実装
