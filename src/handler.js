@@ -239,7 +239,7 @@ exports.handler = async (event) => {
       }
     } else {
       if (simData.batteryLevel <= gpsMultUnitBatteryTheeshold
-         && simData.batteryLevel === -1) {
+         && simData.batteryLevel > -1) {
         postGadgetsArray.push(simData);
         const message = await createMessage(simData);
         await postSlackMessage(message)
